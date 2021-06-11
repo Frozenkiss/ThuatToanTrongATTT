@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<math.h>
+
+void chuyenSoNguyenLon(int arr[100],int p ,int W,int a)
+{
+    int m = ceil(log(p)/log(2));
+    int t = ceil((float)m/W);
+    int tg = a;
+    for(int i = t-1 ; i>=0;i--)
+    {
+        int z = pow(2,W*i);
+        arr[i]=tg/z;
+        tg = tg%z;
+    }
+    printf("A= [");
+    for(int i = t-1 ; i>=0;i--)
+    {
+        printf("%d",arr[i]);
+        if(i!=0)
+        {
+            printf("   ");
+        }
+        else
+        {
+            printf("]");
+        }
+    }
+}
+int main()
+{
+    long long int p,a;
+    int W,arr[100];
+    scanf("%lld",&p);
+    scanf("%d",&W);
+    scanf("%lld",&a);
+    chuyenSoNguyenLon(arr,p,W,a);
+}
